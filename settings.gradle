@@ -1,1 +1,1 @@
-include ':app', ':olimpo'
+include ':app', ':ofragment', ':orecyclerview', ':oview', ':oappack'

@@ -58,6 +58,46 @@ public class ODate {
         return calendar;
     }
 
+    public static int diffMinutes(long diff) {
+        return (int) (diff / (60 * 1000));
+    }
+
+    public static String getOnlyDate(Calendar calendar) {
+        SimpleDateFormat format = getFormatDate();
+        format.setTimeZone(calendar.getTimeZone());
+        Date time = calendar.getTime();
+        return format.format(time);
+    }
+
+    public static String getDaySQLite(int day) {
+        if (day < 10) {
+            return "0" + day;
+        }
+        return String.valueOf(day);
+    }
+
+    public static Calendar getCalendarInitMonth(int value) {
+        Calendar calendar = getCalendarInitDay();
+        calendar.set(Calendar.MONTH, value);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        return calendar;
+    }
+
+    public static Calendar getCalendarInitDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar;
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private static SimpleDateFormat getFormatDate() {
+        return new SimpleDateFormat("yyyy-MM-dd");
+    }
+
     @SuppressLint("SimpleDateFormat")
     private static SimpleDateFormat getFormat() {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
